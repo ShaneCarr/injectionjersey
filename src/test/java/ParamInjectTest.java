@@ -21,19 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 // popular for a time
 //https://stackoverflow.com/questions/30397933/jersey-2-x-custom-injection-annotation-with-attributes/30426226
 public class ParamInjectTest extends JerseyTest {
-
-//    @Override
-//    public Application configure() {
-//        return new ResourceConfig(TestResource.class);
-//
-//               // .register(TestResource.class)
-//              //  .register(AuthFeature.class);
-//    }
-
     @Override
     protected Application configure() {
-       //return null;
-        return new ResourceConfig(TestResource.class);
+        return new ResourceConfig(TestResource.class, AuthFeature.class);
     }
 
     @Test
@@ -43,6 +33,6 @@ public class ParamInjectTest extends JerseyTest {
                 .post(Entity.text("Test"));
 
         assertThat(response.getStatus()).isEqualTo(200);
-        assertThat(response.readEntity(String.class)).isEqualTo("Peeskillet:Test");
+        assertThat(response.readEntity(String.class)).isEqualTo("shane:Test");
     }
 }
