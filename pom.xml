@@ -3,63 +3,73 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.example</groupId>
     <artifactId>code_injection_test</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <dependencies>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-common</artifactId>
-            <version>3.0.4</version>
-
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>3.0.4</version>
-
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.inject</groupId>
-            <artifactId>jersey-hk2</artifactId>
-            <version>3.0.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.test-framework.providers/jersey-test-framework-provider-jetty -->
-        <dependency>
-            <groupId>org.glassfish.jersey.test-framework.providers</groupId>
-            <artifactId>jersey-test-framework-provider-jetty</artifactId>
-            <version>3.0.4</version>
-
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.22.0</version>
-
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
-        <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-    </dependencies>
-
+    <modules>
+        <module>service</module>
+        <module>server</module>
+        <module>auth</module>
+    </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <jersey.version>3.0.4</jersey.version>
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>2.17.2</version>
+                <type>pom</type>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>2.0.0-alpha7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+                <artifactId>jersey-test-framework-provider-jetty</artifactId>
+                <version>${jersey.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet-core</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-common</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+        </dependencies>
 
+    </dependencyManagement>
 </project>

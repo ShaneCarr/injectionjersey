@@ -1,0 +1,6 @@
+auth/Auth.class
+auth/AuthFeature$1.class
+auth/AuthValueParamProvider.class
+auth/AuthFeature.class
+auth/AuthValueParamProvider$UserParamProvider.class
+auth/User.class

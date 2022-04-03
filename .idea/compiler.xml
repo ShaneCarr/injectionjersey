@@ -7,6 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="code_injection_test" />
+        <module name="server" />
+        <module name="auth" />
+        <module name="service" />
       </profile>
     </annotationProcessing>
   </component>
